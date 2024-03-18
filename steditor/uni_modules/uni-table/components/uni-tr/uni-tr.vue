@@ -5,6 +5,7 @@
 			<table-checkbox :checked="checked" :indeterminate="indeterminate" :disabled="disabled" @checkboxSelected="checkboxSelected"></table-checkbox>
 		</th>
 		<slot></slot>
+		<!-- <uni-th class="th-fixed">123</uni-th> -->
 	</tr>
 	<!-- #endif -->
 	<!-- #ifndef H5 -->
@@ -70,7 +71,7 @@ export default {
 	mounted() {
 		if (this.widthThArr.length > 0) {
 			const selectionWidth = this.selection === 'selection' ? 50 : 0
-			this.root.minWidth = this.widthThArr.reduce((a, b) => Number(a) + Number(b)) + selectionWidth
+			this.root.minWidth = Number(this.widthThArr.reduce((a, b) => Number(a) + Number(b))) + selectionWidth;
 		}
 	},
 	// #ifndef VUE3
@@ -90,6 +91,10 @@ export default {
 	methods: {
 		minWidthUpdate(width) {
 			this.widthThArr.push(width)
+			if (this.widthThArr.length > 0) {
+				const selectionWidth = this.selection === 'selection' ? 50 : 0;
+				this.root.minWidth = Number(this.widthThArr.reduce((a, b) => Number(a) + Number(b))) + selectionWidth;
+			}
 		},
 		// 选中
 		checkboxSelected(e) {
