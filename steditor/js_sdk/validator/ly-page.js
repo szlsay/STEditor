@@ -31,14 +31,16 @@ const validator = {
       {
         "format": "timestamp"
       }
-    ]
+    ],
+    "label": "创建时间"
   },
   "update_time": {
     "rules": [
       {
         "format": "timestamp"
       }
-    ]
+    ],
+    "label": "更新时间"
   }
 }
 
